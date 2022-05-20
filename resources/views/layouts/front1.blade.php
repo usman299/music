@@ -977,7 +977,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
 
 
     </style>
-{{--// our css--}}
+    {{--// our css--}}
     <style>
         .header_01.fixedHeader {
             background: #ffd403 !important;
@@ -1006,247 +1006,24 @@ $user = \Illuminate\Support\Facades\Auth::user();
 
             background: #ffd403!important;
         }
+
+         .authWrap {
+             background: #ffd403!important;
+             margin: 0;
+             padding: 30px;
+         }
+
     </style>
 </head>
-<div id='whatsapp-chat' class='hide' >
-    <div class='header-chat'>
-        <div class='head-home'>
-            <div class='info-avatar'><img src='{{asset($gs->logo)}}' /></div>
-            <p><span class="whatsapp-name">Ejay Studio</span><br><small>Usually responds within the hour</small></p>
 
-        </div>
-        <div class='get-new hide'>
-            <div id='get-label'></div>
-            <div id='get-nama'></div>
-        </div>
-    </div>
-    <div class='home-chat'>
-
-    </div>
-    <div class='start-chat'>
-        <div pattern="https://elfsight.com/assets/chats/patterns/whatsapp.png" class="WhatsappChat__Component-sc-1wqac52-0 whatsapp-chat-body">
-            <div class="WhatsappChat__MessageContainer-sc-1wqac52-1 dAbFpq">
-                <div style="opacity: 0;" class="WhatsappDots__Component-pks5bf-0 eJJEeC">
-                    <div class="WhatsappDots__ComponentInner-pks5bf-1 hFENyl">
-                        <div class="WhatsappDots__Dot-pks5bf-2 WhatsappDots__DotOne-pks5bf-3 ixsrax"></div>
-                        <div class="WhatsappDots__Dot-pks5bf-2 WhatsappDots__DotTwo-pks5bf-4 dRvxoz"></div>
-                        <div class="WhatsappDots__Dot-pks5bf-2 WhatsappDots__DotThree-pks5bf-5 kXBtNt"></div>
-                    </div>
-                </div>
-                <div style="opacity: 1;" class="WhatsappChat__Message-sc-1wqac52-4 kAZgZq">
-                    <div class="WhatsappChat__Author-sc-1wqac52-3 bMIBDo">Ejay Studio</div>
-                    <div class="WhatsappChat__Text-sc-1wqac52-2 iSpIQi">Hi 👋<br><br>How can I help you?</div>
-                    {{--                    <div class="WhatsappChat__Time-sc-1wqac52-5 cqCDVm">1:40</div>--}}
-                </div>
-            </div>
-        </div>
-
-        <div class='blanter-msg'>
-            <textarea id='chat-input' placeholder='Écrire un message' maxlength='120' row='1'></textarea>
-            <a href='javascript:void;' id='send-it'><svg viewBox="0 0 448 448"><path d="M.213 32L0 181.333 320 224 0 266.667.213 416 448 224z"/></svg></a>
-
-        </div>
-    </div>
-    <div id='get-number'></div><a class='close-chat' href='javascript:void'>×</a>
-</div>
-<a class='blantershow-chat' href='javascript:void' title='Show Chat'><svg width="20" viewBox="0 0 24 24"><defs/><path fill="#eceff1" d="M20.5 3.4A12.1 12.1 0 0012 0 12 12 0 001.7 17.8L0 24l6.3-1.7c2.8 1.5 5 1.4 5.8 1.5a12 12 0 008.4-20.3z"/><path fill="#4caf50" d="M12 21.8c-3.1 0-5.2-1.6-5.4-1.6l-3.7 1 1-3.7-.3-.4A9.9 9.9 0 012.1 12a10 10 0 0117-7 9.9 9.9 0 01-7 16.9z"/><path fill="#fafafa" d="M17.5 14.3c-.3 0-1.8-.8-2-.9-.7-.2-.5 0-1.7 1.3-.1.2-.3.2-.6.1s-1.3-.5-2.4-1.5a9 9 0 01-1.7-2c-.3-.6.4-.6 1-1.7l-.1-.5-1-2.2c-.2-.6-.4-.5-.6-.5-.6 0-1 0-1.4.3-1.6 1.8-1.2 3.6.2 5.6 2.7 3.5 4.2 4.2 6.8 5 .7.3 1.4.3 1.9.2.6 0 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>Discuter</a>
 
 <body>
 
 
-<!-- Begin:: Header Section -->
-<header class="header_01 isSticky header-transparent" >
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-2 cusLogo">
-                <div class="logo">
-                    <a href="{{route('student.index')}}">
-                        <img src="{{asset($gs->logo)}}" alt="Makeover"/>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-8 menu-col">
-                <a href="javascript:void(0)" class="menu_btn"><i class="icofont-navigation-menu"></i></a>
-                <nav class="mainMenu">
-                    <ul>
-                        <li><a href="{{route('student.index')}}" >HOME</a></li>
-{{--                        <li><a href="{{route('student.index')}}#mission" >Our mission</a></li>--}}
-{{--                        <li><a href="{{route('student.index')}}#offers" >Our Coaches</a></li>--}}
-                        <li><a href="{{route('student.index')}}#about">ABOUT</a></li>
 
-{{--                        <li><a href="{{route('student.index')}}#blog" >Galary</a></li>--}}
-{{--                        <li><a href="{{route('front.index')}}#réservation" style="font-size: 12px;">Réservation</a></li>--}}
-                        @if($user->role==1)
-
-                        <li><a href="{{route('front.contact')}}" >INQUIRIES</a></li>
-                        <li><a href="{{route('courses.index')}}" >AVAIL COURSES</a></li>
-                            <li><a href="{{route('curent.course')}}" >CURRENT COURSES</a></li>
-
-                        @endif
-                        @if($user->role==2)
-                            <li><a href="{{route('student.view')}}" >STUDENT ACCOUNTS</a></li>
-                            <li><a href="{{route('front.contact')}}" >INQUIRIES</a></li>
-                        @endif
-                        @if($user->role==3)
-                            <li><a href="{{route('student.view')}}" >STUDENTS ACCOUNTS</a></li>
-                            <li><a href="{{route('coach.index')}}" >COACHES</a></li>
-                            <li><a href="{{route('acount.request')}}" >ACCOUNT REQUEST</a></li>
-                        @endif
-
-                        <li><a href="{{route('notfications.index')}}" >NOTFICATION</a></li>
-                        @auth
-                            <li><a href="{{route('user.dashboard')}}" >YOUR ACCOUNT</a>
-{{--                                <ul aria-expanded="false">--}}
-{{--                                    <li>--}}
-{{--                                        <a href="{{route('logout')}}" onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();"--}}
-{{--                                           class="dropdown-item ai-icon">--}}
-{{--                                            <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>--}}
-{{--                                            <span class="ml-2">--}}
-{{--                                    Sortir--}}
-{{--                                    </span>--}}
-{{--                                        </a>--}}
-{{--                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--                                            @csrf--}}
-{{--                                        </form>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-                            </li>
-                        @else
-                            <li><a href="{{route('login')}}" >lOGIN</a></li>
-                        @endauth
-{{--                        @guest--}}
-{{--                        <li><a href="{{route('front.index')}}#espace">Espace Praticien</a></li>--}}
-{{--                        @endguest--}}
-{{--                        @auth--}}
-{{--                        <li><a href="{{route('user.dashboard')}}">Espace Praticien</a></li>--}}
-{{--                        @endauth--}}
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-2 navCus">
-                <div class="navAccess">
-                    <a href="javascript:void(0);" class="humBurger"><span></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- End:: Header Section -->
-
-<!-- popup sidebar widget -->
-<section class="popup_sidebar_sec">
-    <div class="popup_sidebar_overlay"></div>
-    <div class="widget_area">
-        <a href="javascript:void(0);" class="widget_closer"><i class="icofont-close-line"></i></a>
-        <div class="center_align">
-            <div class="about_widget_area">
-                <div class="wd_logo">
-                    <a href="{{route('front.index')}}"><img src="{{asset($gs->logo)}}" alt="makeover"/></a>
-                </div>
-                <p>
-                   {{$gs->footer_text}}
-                </p>
-                <div class="icon_box_04">
-                    <i class="noun-noun_call_1624888"></i>
-                    <h4>Telephone</h4>
-                    <p>{{$gs->phone}}</p>
-                </div>
-                <div class="icon_box_04">
-                    <i class="noun-noun_Email_485891"></i>
-                    <h4>Email</h4>
-                    <p>{{$gs->email}}</p>
-                </div>
-                <div class="icon_box_04">
-                    <i class="noun-noun_Address_1271842"></i>
-                    <h4>Adresse</h4>
-                    <p>{{$gs->address}}</p>
-                </div>
-                <div class="social_item">
-                    <a href="{{$gs->facebook}}"><i class="icofont-facebook"></i></a>
-                    <a href="{{$gs->instagram}}"><i class="icofont-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- popup sidebar widget -->
 @yield('content')
 
 
-<!-- Begin:: Footer Section -->
-<footer class="footer_01" style="background-color: #ffd403">
-    <div class="layer_img move_anim_two">
-        <img src="{{asset($gs->footer_logo)}}" alt=""/>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-lg-4 col-xl-4">
-                <aside class="widget about_widget">
-                    <h3 class="widget_title">About</h3>
-                    <p>
-                        Guitar Band Music School offers comprehensive guitar lessons that start with the fundamentals, including scales, chords, tuning, arpeggios, and rhythm adapted to various skill levels. Our core philosophy is that the best way for students to gain musical proficiency is through performance-based music education. All of our lessons for guitar students include a performance aspect.
-                    </p>
-                    <a href="#" class="mo_btn mob_lg"><i class="icofont-long-arrow-right"></i>Read more</a>
-                </aside>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xl-4">
-                <aside class="widget">
-                    <h3 class="widget_title">Newsletter</h3>
-                    <p>
-                        Enter your email address to get the latest updates and offers from us.
-                    </p>
-                    <form action="#" method="post">
-                        <div class="mc4wp-form-fields">
-                            <input type="email" name="EMAIL" placeholder="Entrer votre Email">
-                            <button type="submit"><i class="icofont-long-arrow-right"></i></button>
-                        </div>
-                    </form>
-                </aside>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xl-3 offset-xl-1">
-                <aside class="widget">
-                    <h3 class="widget_title">Contact us</h3>
-                    <div class="info_box">
-                        <i class="icofont-location-pin"></i>
-                        <p>Adress tupas St. Tigbuan iloilo, 5021</p>
-                    </div>
-                    <div class="info_box">
-                        <i class="icofont-phone"></i>
-                        <p>Helpline24/7<br>0920233775<br>092094900<br></p>
-                    </div>
-                    <div class="info_box">
-                        <i class="icofont-clock-time"></i>
-                        <p><b>Email:</b>Ejaybolano@gmail.com</p>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </div>
-</footer>
-<section class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <p>© 2022 <a href="http://ikaedigital.com" target="_blank" rel="noopener">Ejay Studio</a> . All Rights Reserved.</p>
-            </div>
-            <div class="col-md-6">
-                <div class="copy_social">
-                    <a target="_blank" href="https://www.facebook.com/"><i class="icofont-facebook"></i></a>
-                    <a target="_blank" href="https://twitter.com/"><i class="icofont-twitter"></i></a>
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- End:: Footer Section -->
-
-<!-- Bact To Top -->
-<a href="javascript:void(0);" id="backtotop"><i class="icofont-bubble-up"></i></a>
-<!-- Bact To Top -->
 <script>
         @if(Session::has('messege'))
     var type="{{Session::get('alert-type','info')}}"

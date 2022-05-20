@@ -12,6 +12,7 @@
     <section class="cartPage" >
         <div class="container" style="margin-top: 50px">
             <div class="row">
+                <h2 style="margin-left: 420px;">We know that you are in the {{$c}} page</h2>
                 <button style="margin-left: 970px; color: white " type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2">
                     Add New Sesstion
                 </button>

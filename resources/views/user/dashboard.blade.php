@@ -32,6 +32,9 @@
                     <div class="tab">
                         <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">DashBoard</button>
                         <button class="tablinks" onclick="openCity(event, 'Tokyo')">Profile</button>
+                        @if(Auth::user()->role==3)
+                        <button class="tablinks" onclick="openCity(event, 'Student')">Students</button>
+                        @endif
 {{--                        <a href="{{route('front.products')}}"> <button class="tablinks">Produits</button></a>--}}
 {{--                        <button class="tablinks" onclick="openCity(event, 'Paris')">Mes Commandes</button>--}}
 {{--                      <button class="tablinks" onclick="openCity(event, 'Tokyo')">Détails du compte</button>--}}
@@ -47,7 +50,12 @@
                     <div id="London" class="tabcontent">
                         <h3>Hellow <b>{{Auth::user()->fname}} {{Auth::user()->lname}} , </b></h3>
                             <br>
-                        <h3>Welcome to Ejay Studio  , where you will find all your private area.</h3>
+                        <h3>Welcome to Ejay Studio  ,
+                            @if(\Illuminate\Support\Facades\Auth::user()->email_verified_at==null && \Illuminate\Support\Facades\Auth::user()->role!=3)
+                            You have submitted your request to the admin
+                            please wait for confirmation.
+                            @endif
+                        </h3>
                         <br>
 
                     </div>
@@ -134,8 +142,44 @@
                             </div>
                         </form>
                     </div>
+                    <div id="Student" class="tabcontent">
+                        <h4> <b>Approved Student </b></h4>
+                        <br>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($users as $key =>$row)
+                            <tr>
+
+                                <th scope="row">{{$key+1}}</th>
+                                <td>{{$row->fname ??" "}}</td>
+                                <td>{{$row->course ??" "}}</td>
+                                    <td>{{$row->package ??" "}}</td>
+                                    <td>{{$row->duration ??" "}}</td>
+                                <td>{{$row->phone ??" "}}</td>
+                                <td><a   href="{{route('user.status',['id'=>$row->id])}}" class="btn btn-warning">Approved</a></td>
+
+                            </tr>
+                            @endforeach
+                            </tbody>
+
+                        </table>
+                        {{ $users->links() }}
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
+
 @endsection

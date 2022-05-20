@@ -473,6 +473,6 @@ class ContentController extends Controller
     }
     public function studentLogin()
     {
-        return view('music.auth.login');
+        return view('auth.login');
     }
 }

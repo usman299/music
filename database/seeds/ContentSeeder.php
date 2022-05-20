@@ -19,6 +19,7 @@ class ContentSeeder extends Seeder
             'email' => 'admin1@gmail.com',
             'role' => '0',
             'phone' => '00000000',
+            'email_verified_at'=>'1',
             'address' => 'Guadeloupe',
             'password' => Hash::make('12345678'),
             'image' => 'local/avatar.jpg'
@@ -30,6 +31,7 @@ class ContentSeeder extends Seeder
             'role' => '3',
             'dob' => '21-3-1998',
             'course' => 'Guitar',
+            'email_verified_at'=>'1',
             'phone' => '00000000',
             'address' => 'Guadeloupe',
             'password' => Hash::make('12345678'),
@@ -41,6 +43,7 @@ class ContentSeeder extends Seeder
             'email' => 'student@gmail.com',
             'role' => '1',
             'dob' => '21-3-1998',
+            'email_verified_at'=>'1',
             'course' => 'Guitar',
             'phone' => '00000000',
             'address' => 'Guadeloupe',
@@ -55,6 +58,7 @@ class ContentSeeder extends Seeder
             'phone' => '00000000',
             'dob' => '21-3-1998',
             'course' => 'Guitar',
+            'email_verified_at'=>'1',
             'address' => 'Guadeloupe',
             'password' => Hash::make('12345678'),
             'image' => 'local/avatar.jpg'

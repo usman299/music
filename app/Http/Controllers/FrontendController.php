@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
-
+use App\Mail\ConfimationUser;
+use Mail;
 use App\Category;
 use App\Coache;
 use App\Coupon;
@@ -107,7 +108,8 @@ class FrontendController extends Controller
         $user = Auth::user();
         $orders = Order::where('user_id', $user->id)->where('paymentstatus', '1')->get();
         $reservation = Reservation::where('user_id','=',Auth::user()->id)->get();
-        return view('user.dashboard', compact('user', 'orders','reservation'));
+        $users = User::where('email_verified_at','=',null)->paginate(5);
+        return view('user.dashboard', compact('user', 'orders','reservation','users'));
     }
     public function profileupdate(Request $request){
         $id = Auth::user();
@@ -424,7 +426,7 @@ class FrontendController extends Controller
     }
     public function coachRegister(){
 
-        return view('auth.register');
+        return view('auth.register1');
     }
     public function coachRegisterStore(Request $request){
 
@@ -436,11 +438,8 @@ class FrontendController extends Controller
         $coach->phone = $request->phone;
         $coach->password = Hash::make($request->password);
         $coach->address = $request->address;
-        $coach->course = $request->course;
-        $coach->package = $request->package;
 
         $coach->role = 2;
-        $coach->duration = $request->duration;
         $coach->save();
 
         $notification = array(
@@ -552,6 +551,24 @@ class FrontendController extends Controller
         $user = Auth::user();
         $sesstion = Sesstion::where('student_id','=',$user->id)->get();
        return view('music.account.courses',compact('sesstion'));
+
+    }
+    public function userStatus($id){
+
+        $user = User::where('id','=',$id)->first();
+        $user->email_verified_at = 1;
+        $user->update();
+        $dataa = array(
+            'name' => $user->fname,
+        );
+
+        Mail::to($user->email)->send(new  ConfimationUser($dataa));
+
+        $notification = array(
+            'messege' => 'Approved User',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
 
     }
 }

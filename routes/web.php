@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ContentController@studentLogin')->name('front.index');
+Route::get('/', function () {
+    return view('music.auth.login');
+});
+
+
+//Route::get('/', 'ContentController@studentLogin')->name('front.index');
 Route::get('/curent/course', 'FrontendController@curentCourse')->name('curent.course');
 Route::post('/available/course', 'FrontendController@availableCourse')->name('available.course');
 Route::post('/profile/update', 'FrontendController@profileUpdated')->name('profile.update');
@@ -163,5 +168,6 @@ Route::group(['middleware' => ['auth', 'web']], function() {
 
     Route::get('/user/order/details/{id}', 'FrontendController@orderDetails')->name('user.order-detail');
     Route::get('/user/dashboard', 'FrontendController@userDashboard')->name('user.dashboard');
+    Route::get('/user/status/{id}', 'FrontendController@userStatus')->name('user.status');
     Route::post('/user/profileupdate', 'FrontendController@profileupdate')->name('user.profileupdate');
 });

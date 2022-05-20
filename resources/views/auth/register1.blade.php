@@ -1,4 +1,4 @@
-@extends('layouts.front1')
+@extends('layouts.front')
 <style>
     .authWrap {
         background: #ffd403!important;
@@ -30,8 +30,8 @@
                 <div class="col-lg-6">
 
                     <div class="authWrap authLogin">
-                        <h1 class="authTitle" style="text-align: center">Create Student Account!</h1>
-                        <form action="{{route('register')}}" method="post" enctype="multipart/form-data" >
+                        <h1 class="authTitle" style="text-align: center">Create Coach Account!</h1>
+                        <form method="POST" action="{{ route('coach.register') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-6">
@@ -59,17 +59,9 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <input placeholder="Telephone" type="text" class="@error('phone') is-invalid @enderror" name="phone" required value="">
                                     @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                                <div class="col-sm-6">
-                                    <input placeholder="Address" type="text" class="@error('address') is-invalid @enderror" name="address" required value="">
-                                    @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -87,38 +79,40 @@
                                 <div class="col-sm-6">
                                     <input placeholder="Confirm Password" class="@error('confirm_password') is-invalid @enderror" type="password" required name="password_confirmation" >
                                 </div>
-
-                                <div class="col-sm-12" style="margin-top: 20px;">
-                                <h1 class="authTitle" style="text-align: center">Course to Avail!</h1>
+                                <div class="col-lg-12">
+                                    <textarea class="required" name="address" placeholder=" Your Adresse" required></textarea>
                                 </div>
-                                <div class="col-sm-12" >
-                                    <select name="course"  >
-                                        <option value="Piano" >Piano </option>
-                                        <option value="Voice">Voice </option>
-                                        <option value="Guitar">Guitar </option>
-                                        <option value="Ukelele" >Ukelele </option>
-                                        <option value="Violen">Violen </option>
-                                        <option value="Music Theory">Music Theory </option>
+                                {{--                                <div class="col-sm-12" style="margin-top: 20px;">--}}
+                                {{--                                <h1 class="authTitle" style="text-align: center">Course tO Avail!</h1>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="col-sm-12" >--}}
+                                {{--                                    <select name="course"  >--}}
+                                {{--                                        <option value="Piano" >Piano </option>--}}
+                                {{--                                        <option value="Voice">Voice </option>--}}
+                                {{--                                        <option value="Guitar">Guitar </option>--}}
+                                {{--                                        <option value="Ukelele" >Ukelele </option>--}}
+                                {{--                                        <option value="Violen">Violen </option>--}}
+                                {{--                                        <option value="Music Theory">Music Theory </option>--}}
 
-                                    </select>
+                                {{--                                    </select>--}}
 
-                                </div>
-                                <div class="col-sm-6" style="margin-top: 15px;">
-                                    <select name="package" >
-                                        <option value="1" >1 Sesstion/Walk </option>
-                                        <option value="10">10 Sesstion </option>
+                                {{--                                </div>--}}
+                                {{--                                <div class="col-sm-6" style="margin-top: 15px;">--}}
+                                {{--                                    <select name="package" >--}}
+                                {{--                                        <option value="1" >1 Sesstion/Walk </option>--}}
+                                {{--                                        <option value="10">10 Sesstion </option>--}}
 
-                                    </select>
+                                {{--                                    </select>--}}
 
-                                </div>
-                                <div class="col-sm-6" style="margin-top: 15px;">
-                                    <select name="duration"  >
-                                        <option value="30" >30 Minutes </option>
-                                        <option value="45">45 Minutes-1h </option>
+                                {{--                                </div>--}}
+                                {{--                                <div class="col-sm-6" style="margin-top: 15px;">--}}
+                                {{--                                    <select name="duration"  >--}}
+                                {{--                                        <option value="30" >30 Minutes </option>--}}
+                                {{--                                        <option value="45">45 Minutes-1h </option>--}}
 
-                                    </select>
+                                {{--                                    </select>--}}
 
-                                </div>
+                                {{--                                </div>--}}
                                 <div class="col-sm-12" style="margin-top: 10px;">
                                     <button type="submit" class="woocommerce-button button woocommerce-form-login__submit mo_btn" name="login" value="Log in">
                                         <i class="icofont-unlock"></i>Register
