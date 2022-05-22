@@ -8,6 +8,9 @@
         <div class="row">
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
+
+                    <p style="color: red!important;"><b>{{$message}}</b></p>
+
                 <h3 style="text-align: center">Welcome please login</h3>
                 <div class="authWrap authLogin">
                     <h2 class="authTitle">Login</h2>

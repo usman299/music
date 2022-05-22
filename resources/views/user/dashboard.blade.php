@@ -51,10 +51,7 @@
                         <h3>Hellow <b>{{Auth::user()->fname}} {{Auth::user()->lname}} , </b></h3>
                             <br>
                         <h3>Welcome to Ejay Studio  ,
-                            @if(\Illuminate\Support\Facades\Auth::user()->email_verified_at==null && \Illuminate\Support\Facades\Auth::user()->role!=3)
-                            You have submitted your request to the admin
-                            please wait for confirmation.
-                            @endif
+
                         </h3>
                         <br>
 

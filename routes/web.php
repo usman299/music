@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('music.auth.login');
+    $message = " ";
+    return view('auth.login')->with('message',$message);
 });
 
 
@@ -34,6 +35,7 @@ Route::post('/sesstion/store', 'FrontendController@sesstionStore')->name('sessti
 Route::post('/coach/store', 'FrontendController@coachStore')->name('coach.store');
 Route::get('/coach/register', 'FrontendController@coachRegister')->name('coach.register');
 Route::post('/coach/register', 'FrontendController@coachRegisterStore')->name('coach.register');
+Route::post('/student/register', 'FrontendController@studentRegisterStore')->name('student.register');
 
 Route::get('/srudent/home', 'FrontendController@index')->name('student.index');
 Route::get('/notfications/', 'FrontendController@notficationsIndex')->name('notfications.index');

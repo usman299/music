@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Mail\ConfimationUser;
+use Illuminate\Support\Facades\Validator;
 use Mail;
 use App\Category;
 use App\Coache;
@@ -447,6 +448,33 @@ class FrontendController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }
+    public function studentRegisterStore(Request $request){
+
+        $request->validate([
+            'fname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+        ]);
+
+        $coach = new User();
+        $coach->fname = $request->fname;
+        $coach->lname = '.';
+        $coach->dob = $request->dob;
+        $coach->email = $request->email;
+        $coach->phone = $request->phone;
+        $coach->course = $request->course;
+        $coach->duration = $request->duration;
+        $coach->package = $request->package;
+        $coach->password = Hash::make($request->password);
+        $coach->address = $request->address;
+
+        $coach->role = 1;
+        $coach->save();
+        $message = "You have submitted your request to the admin please wait for confirmation";
+        return view('auth.login')->with('message',$message);
+
     }
     public function sesstionStore(Request $request){
 
