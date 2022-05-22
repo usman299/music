@@ -38,13 +38,10 @@
 {{--                        <a href="{{route('front.products')}}"> <button class="tablinks">Produits</button></a>--}}
 {{--                        <button class="tablinks" onclick="openCity(event, 'Paris')">Mes Commandes</button>--}}
 {{--                      <button class="tablinks" onclick="openCity(event, 'Tokyo')">Détails du compte</button>--}}
-                        <a href="{{route('logout')}}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        <a href="{{route('front.logout')}}" >
                             <button class="tablinks">Logout</button>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+
                     </div>
 
                     <div id="London" class="tabcontent">

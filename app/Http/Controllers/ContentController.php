@@ -12,6 +12,7 @@ use App\Website;
 use Golchha21\ReSmushIt\Facades\Optimize;
 use Golchha21\ReSmushIt\ReSmushIt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
 {
@@ -473,6 +474,13 @@ class ContentController extends Controller
     }
     public function studentLogin()
     {
-        return view('auth.login');
+        $message = " ";
+        return view('auth.login')->with('message',$message);
+
+    }
+    public function logout(){
+        Auth::logout();
+        $message = " ";
+        return view('auth.login')->with('message',$message);
     }
 }

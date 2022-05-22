@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $message = " ";
-    return view('auth.login')->with('message',$message);
-});
+//Route::get('/', function () {
+//    $message = " ";
+//    return view('auth.login')->with('message',$message);
+//});
 
 
-//Route::get('/', 'ContentController@studentLogin')->name('front.index');
+Route::get('/', 'ContentController@studentLogin')->name('front.index');
+Route::get('/logout', 'ContentController@logout')->name('front.logout');
 Route::get('/curent/course', 'FrontendController@curentCourse')->name('curent.course');
 Route::post('/available/course', 'FrontendController@availableCourse')->name('available.course');
 Route::post('/profile/update', 'FrontendController@profileUpdated')->name('profile.update');
