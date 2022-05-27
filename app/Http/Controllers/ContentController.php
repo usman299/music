@@ -483,4 +483,7 @@ class ContentController extends Controller
         $message = " ";
         return view('auth.login')->with('message',$message);
     }
+    public function passwordForgetCreat(){
+       return view('auth.passwords.email');
+    }
 }

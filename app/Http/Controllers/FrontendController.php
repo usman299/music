@@ -109,8 +109,9 @@ class FrontendController extends Controller
         $user = Auth::user();
         $orders = Order::where('user_id', $user->id)->where('paymentstatus', '1')->get();
         $reservation = Reservation::where('user_id','=',Auth::user()->id)->get();
-        $users = User::where('email_verified_at','=',null)->paginate(5);
-        return view('user.dashboard', compact('user', 'orders','reservation','users'));
+        $users = User::where('status','=',0)->where('role','=',1)->paginate(5);
+        $userss = User::where('status','!=',0)->where('role','=',1)->paginate(5);
+        return view('user.dashboard', compact('user', 'orders','reservation','users','userss'));
     }
     public function profileupdate(Request $request){
         $id = Auth::user();
@@ -581,19 +582,28 @@ class FrontendController extends Controller
        return view('music.account.courses',compact('sesstion'));
 
     }
-    public function userStatus($id){
+    public function userStatus($id,$status){
 
         $user = User::where('id','=',$id)->first();
-        $user->email_verified_at = 1;
+        $user->status = $status;
         $user->update();
+        if($status==1){
+            $msg = 'are confirm by Admin';
+        }
+        else{
+            $msg = 'are reject by Admin';
+        }
+
         $dataa = array(
             'name' => $user->fname,
+            'msg' => $msg,
+
         );
 
         Mail::to($user->email)->send(new  ConfimationUser($dataa));
 
         $notification = array(
-            'messege' => 'Approved User',
+            'messege' => 'You'.$msg,
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

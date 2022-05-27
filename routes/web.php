@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'ContentController@studentLogin')->name('front.index');
+Route::get('/forget/password', 'ContentController@passwordForgetCreat')->name('forget.password');
 Route::get('/logout', 'ContentController@logout')->name('front.logout');
 Route::get('/curent/course', 'FrontendController@curentCourse')->name('curent.course');
 Route::post('/available/course', 'FrontendController@availableCourse')->name('available.course');
@@ -171,6 +172,6 @@ Route::group(['middleware' => ['auth', 'web']], function() {
 
     Route::get('/user/order/details/{id}', 'FrontendController@orderDetails')->name('user.order-detail');
     Route::get('/user/dashboard', 'FrontendController@userDashboard')->name('user.dashboard');
-    Route::get('/user/status/{id}', 'FrontendController@userStatus')->name('user.status');
+    Route::get('/user/status/{id}/{status}', 'FrontendController@userStatus')->name('user.status');
     Route::post('/user/profileupdate', 'FrontendController@profileupdate')->name('user.profileupdate');
 });

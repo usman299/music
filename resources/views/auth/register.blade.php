@@ -30,7 +30,7 @@
                 <div class="col-lg-6">
 
                     <div class="authWrap authLogin">
-                        <h1 class="authTitle" style="text-align: center">Create Student Account!</h1>
+                        <h1 class="authTitle" style="text-align: center"><b>Create Student Account!</b></h1>
                         <form action="{{route('student.register')}}" method="post" enctype="multipart/form-data" >
                             @csrf
                             <div class="row">
@@ -89,7 +89,7 @@
                                 </div>
 
                                 <div class="col-sm-12" style="margin-top: 20px;">
-                                <h1 class="authTitle" style="text-align: center">Course to Avail!</h1>
+                                <h1 class="authTitle" style="text-align: center"><b>Course to Avail!</b></h1>
                                 </div>
                                 <div class="col-sm-12" >
                                     <select name="course"  >
@@ -123,7 +123,7 @@
                                     <button type="submit" class="woocommerce-button button woocommerce-form-login__submit mo_btn" name="login" >
                                         <i class="icofont-unlock"></i>Register
                                     </button><br>
-
+                                    <div style="margin-top: 10px; text-align: center;">Do You have an account?<a href="{{route('front.index')}}" style="font-size: 15px; color: black;"><b>Login</b></a></div>
                                 </div>
                             </div>
                         </form>

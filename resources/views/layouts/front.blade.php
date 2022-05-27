@@ -974,6 +974,10 @@ $user = \Illuminate\Support\Facades\Auth::user();
             max-width: 75%!important;
             height: auto;
         }
+        {{--.humBurger {--}}
+        {{--    background-image: url({{asset('allimages/1647413296allimages.jpeg')}})!important;--}}
+
+        {{--}--}}
 
 
     </style>
@@ -1126,8 +1130,15 @@ $user = \Illuminate\Support\Facades\Auth::user();
             </div>
             <div class="col-lg-2 navCus">
                 <div class="navAccess">
-                    <a href="javascript:void(0);" class="humBurger"><span></span></a>
+                    @if(Auth::user()->image)
+                        <img src="{{asset(Auth::user()->image )}}" style="width: 60px; height: 60px;border-radius: 50%;">
+
+                    @else
+                        <img src="{{asset('allimages/1647413296allimages.jpeg')}}" style="width: 60px; height: 60px;border-radius: 50%;">
+
+                    @endif
                 </div>
+
             </div>
         </div>
     </div>

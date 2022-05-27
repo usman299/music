@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<p> {{ $dataa['name'] }} are confirm by Admin</p>
+<p> {{ $dataa['name'] }}  {{ $dataa['msg'] }}</p>
 
 <p>Thank you</p>
 </body>

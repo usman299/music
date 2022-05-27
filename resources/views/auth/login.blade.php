@@ -13,7 +13,7 @@
 
                 <h3 style="text-align: center">Welcome please login</h3>
                 <div class="authWrap authLogin">
-                    <h2 class="authTitle">Login</h2>
+                    <h1 class="authTitle" style="text-align: center"><b>Login</b></h1>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="row">
@@ -26,7 +26,7 @@
                                 @enderror
                             </div>
                             <div class="col-sm-12">
-                                <input placeholder="Mot de passe" class="@error('password') is-invalid @enderror" type="password" required name="password">
+                                <input placeholder="Password" class="@error('password') is-invalid @enderror" type="password" required name="password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -36,7 +36,8 @@
                             <div class="col-sm-12">
                                 <button type="submit" class="woocommerce-button button woocommerce-form-login__submit mo_btn" name="login" value="Log in">
                                     <i class="icofont-unlock"></i>Login
-                                </button><br>
+                                </button>
+                                <a href="{{route('forget.password')}}" style="font-size: 15px; color: black; " ><b style="margin-left: 250px;">Forget Password</b></a><br>
                                 <div style="margin-top: 10px; text-align: center;">I do not have an account?<a href="{{route('register')}}" style="font-size: 15px; color: black;"><b>Registration</b></a></div>
                             </div>
                         </div>

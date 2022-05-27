@@ -23,6 +23,7 @@
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="col-lg-12">
+
 {{--                    <img src="{{asset('front/images/6.png')}}" style="width: 100%" alt="">--}}
                 </div>
             </div>
@@ -33,7 +34,8 @@
                         <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">DashBoard</button>
                         <button class="tablinks" onclick="openCity(event, 'Tokyo')">Profile</button>
                         @if(Auth::user()->role==3)
-                        <button class="tablinks" onclick="openCity(event, 'Student')">Students</button>
+                        <button class="tablinks" onclick="openCity(event, 'Student')">Students Request</button>
+                            <button class="tablinks" onclick="openCity(event, 'Users')">All Students </button>
                         @endif
 {{--                        <a href="{{route('front.products')}}"> <button class="tablinks">Produits</button></a>--}}
 {{--                        <button class="tablinks" onclick="openCity(event, 'Paris')">Mes Commandes</button>--}}
@@ -161,9 +163,51 @@
                                     <td>{{$row->package ??" "}}</td>
                                     <td>{{$row->duration ??" "}}</td>
                                 <td>{{$row->phone ??" "}}</td>
-                                <td><a   href="{{route('user.status',['id'=>$row->id])}}" class="btn btn-warning">Approved</a></td>
+                                <td><a   href="{{route('user.status',['id'=>$row->id,'status'=>'1'])}}" class="btn btn-warning">Approved</a>
+                                    <a   href="{{route('user.status',['id'=>$row->id,'status'=>'2'])}}" class="btn btn-danger">Reject</a>
+                                </td>
 
                             </tr>
+                            @endforeach
+                            </tbody>
+
+                        </table>
+                        {{ $users->links() }}
+                    </div>
+                    <div id="Users" class="tabcontent">
+                        <h4> <b>All Students </b></h4>
+                        <br>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($userss as $key =>$row)
+                                <tr>
+
+                                    <th scope="row">{{$key+1}}</th>
+                                    <td>{{$row->fname ??" "}}</td>
+                                    <td>{{$row->course ??" "}}</td>
+                                    <td>{{$row->package ??" "}}</td>
+                                    <td>{{$row->duration ??" "}}</td>
+                                    <td>{{$row->phone ??" "}}</td>
+                                    <td>
+                                        @if($row->status==1)
+                                        <a   href="#" class="btn btn-warning">Accept</a>
+                                        @else
+                                        <a   href="#" class="btn btn-danger">Reject</a>
+                                        @endif
+                                    </td>
+
+                                </tr>
                             @endforeach
                             </tbody>
 
